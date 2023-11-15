@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MainModel extends Model
+class ProductModel extends Model
 {
-    protected $table            = 'info';
+    protected $table            = 'productlist';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['trackcode',	'firstname', 'middlename', 'lastname', 'email'];
+    protected $allowedFields    = ['image_path', 'category_id', 'prod_name', 'stock', 'price'];
 
     // Dates
     protected $useTimestamps = false;

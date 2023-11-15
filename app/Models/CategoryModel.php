@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MainModel extends Model
+class CategoryModel extends Model
 {
-    protected $table            = 'info';
+    protected $table            = 'category';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['trackcode',	'firstname', 'middlename', 'lastname', 'email'];
+    protected $allowedFields    = ['category_name'];
 
     // Dates
     protected $useTimestamps = false;
