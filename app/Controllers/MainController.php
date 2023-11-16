@@ -45,20 +45,42 @@ class MainController extends ResourceController
 
     }
 
+    public function sav()
+    {
+        $json = $this->request->getJSON();
+        $category_id = $json->category_id;
+        $prod_name = $json->prod_name;
+        $stock = $json->stock;
+        $price = $json->price;
 
-    public function sav(){
-      $json = $this->request->getJSON();
-      $data = [
-        'category_id' => $json->category_id,
-        'image' => $json->image,
-        'prod_name' => $json->prod_name,
-        'stock' => $json->stock,
-        'price' => $json->price,
-      ];
-      $produ = new ProductModel();
-      $p = $produ->save($data);
-      return $this->respond($p, 200);
+        // Handle image upload
+        $imagePath = ''; // Placeholder for the image path or filename
+
+        if ($file = $this->request->getFile('image')) {
+            // Process image upload
+            $newName = $file->getRandomName();
+            $file->move('./uploads/', $newName);
+            $imagePath = 'uploads/' . $newName; // Adjust as needed based on your directory structure
+        }
+
+        $data = [
+            'category_id' => $category_id,
+            'image_path' => $imagePath, // Adjust column name as per your database structure
+            'prod_name' => $prod_name,
+            'stock' => $stock,
+            'price' => $price,
+        ];
+
+        $productModel = new ProductModel();
+        $insertedId = $productModel->insert($data); // Insert data into productlist table
+
+        if ($insertedId) {
+            return $this->respond(['message' => 'Product added successfully', 'id' => $insertedId], 200);
+        } else {
+            return $this->respond(['message' => 'Failed to add product'], 500);
+        }
     }
+
     public function getDatas()
     {
       $produ = new ProductModel();
@@ -81,5 +103,14 @@ class MainController extends ResourceController
       return $this->respond($categories, 200);
   }
 
-
+  public function savecateg()
+  {
+    $json = $this->request->getJSON();
+    $data = [
+      'category_name' => $json->category_name,
+    ];
+      $cat = new CategoryModel();
+      $catd = $cat->save($data);
+      return $this->respond($catd, 200);
+  }
 }
