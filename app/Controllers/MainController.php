@@ -8,6 +8,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\MainModel;
 use App\Models\ProductModel;
 use App\Models\CategoryModel;
+use App\Models\SizeModel;
 
 class MainController extends ResourceController
 {
@@ -52,6 +53,8 @@ class MainController extends ResourceController
         $prod_name = $json->prod_name;
         $stock = $json->stock;
         $price = $json->price;
+        $unit_price = $json->unit_price;
+        $size_id = $json->size_id;
 
         // Handle image upload
         $imagePath = ''; // Placeholder for the image path or filename
@@ -69,6 +72,8 @@ class MainController extends ResourceController
             'prod_name' => $prod_name,
             'stock' => $stock,
             'price' => $price,
+            'unit_price' => $unit_price,
+            'size_id' => $size_id,
         ];
 
         $productModel = new ProductModel();
@@ -87,21 +92,19 @@ class MainController extends ResourceController
       $datas = $produ->findAll();
       return $this->respond($datas, 200);
     }
-    public function getcat()
-  {
-      $cat = new CategoryModel();
-      $data = $cat->findAll();
+  public function getsize(){
+    $siz = new SizeModel();
+    $data = $siz->findAll();
 
-      $categories = []; // Initialize an array to hold formatted categories
-      foreach ($data as $category) {
-          $categories[] = [
-              'id' => $category['id'],
-              'category_name' => $category['category_name']
-          ];
-      }
-
-      return $this->respond($categories, 200);
+    $sizes = [];
+    foreach ($data as $size) {
+      $sizes[] = [
+        'size_id' => $size['size_id'],
+        'item_size' => $size['item_size']
+      ];
   }
+  return $this->respond($sizes, 200);
+}
 
   public function savecateg()
   {
@@ -113,4 +116,24 @@ class MainController extends ResourceController
       $catd = $cat->save($data);
       return $this->respond($catd, 200);
   }
+
+  public function getcat()
+{
+    $cat = new CategoryModel();
+    $data = $cat->findAll();
+
+    $categories = []; // Initialize an array to hold formatted categories
+    foreach ($data as $category) {
+        $categories[] = [
+            'id' => $category['id'],
+            'category_name' => $category['category_name']
+        ];
+    }
+
+    return $this->respond($categories, 200);
+
+
+}
+
+//final copy
 }

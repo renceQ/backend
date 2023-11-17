@@ -1096,3 +1096,95 @@ in SYSTEMPATH\Model.php on line 873.
  3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
  4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:22:18 --> Unclosed '{' on line 14
+in APPPATH\Controllers\MainController.php on line 136.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(291): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(269): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\MainController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\MainController')
+ 4 SYSTEMPATH\CodeIgniter.php(900): class_exists('\\App\\Controllers\\MainController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:22:37 --> Undefined constant "App\Controllers\siz"
+in APPPATH\Controllers\MainController.php on line 125.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:22:55 --> Undefined array key "id"
+in APPPATH\Controllers\MainController.php on line 130.
+ 1 APPPATH\Controllers\MainController.php(130): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 130)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:24:15 --> Undefined array key "item_name"
+in APPPATH\Controllers\MainController.php on line 131.
+ 1 APPPATH\Controllers\MainController.php(131): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_name"', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 131)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:24:17 --> Undefined array key "item_name"
+in APPPATH\Controllers\MainController.php on line 131.
+ 1 APPPATH\Controllers\MainController.php(131): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_name"', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 131)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:24:18 --> Undefined array key "item_name"
+in APPPATH\Controllers\MainController.php on line 131.
+ 1 APPPATH\Controllers\MainController.php(131): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_name"', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 131)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:24:36 --> Undefined array key "item_name"
+in APPPATH\Controllers\MainController.php on line 131.
+ 1 APPPATH\Controllers\MainController.php(131): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_name"', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 131)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:26:38 --> Call to undefined function App\Controllers\respond()
+in APPPATH\Controllers\MainController.php on line 134.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:29:16 --> Call to undefined function App\Controllers\respond()
+in APPPATH\Controllers\MainController.php on line 134.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:29:31 --> Call to undefined function App\Controllers\respond()
+in APPPATH\Controllers\MainController.php on line 134.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:30:02 --> Call to undefined function App\Controllers\respond()
+in APPPATH\Controllers\MainController.php on line 134.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:30:03 --> Call to undefined function App\Controllers\respond()
+in APPPATH\Controllers\MainController.php on line 134.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:33:43 --> Call to undefined function App\Controllers\respond()
+in APPPATH\Controllers\MainController.php on line 134.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-16 18:34:54 --> Call to undefined function App\Controllers\respond()
+in APPPATH\Controllers\MainController.php on line 128.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->getsize()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
