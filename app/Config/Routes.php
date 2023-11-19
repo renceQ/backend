@@ -17,3 +17,5 @@ $routes->post('/del', 'MainController::del');
 $routes->post('/savecateg', 'MainController::savecateg');
 $routes->match(['post', 'get'],'/getsize', 'MainController::getsize');
 $routes->post('/editcateg', 'MainController::editcateg');
+$routes->match(['post', 'get'],'/api/login', 'MainController::login');
+$routes->match(['post', 'get'],'/api/register', 'MainController::register');
