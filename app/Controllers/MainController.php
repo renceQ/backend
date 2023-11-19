@@ -9,6 +9,7 @@ use App\Models\MainModel;
 use App\Models\ProductModel;
 use App\Models\CategoryModel;
 use App\Models\SizeModel;
+use App\Models\EventBookingModel;
 
 class MainController extends ResourceController
 {
@@ -16,6 +17,8 @@ class MainController extends ResourceController
     {
         //
     }
+
+
     public function save()
     {
       $json = $this->request->getJSON();
@@ -30,6 +33,8 @@ class MainController extends ResourceController
         $r = $main->save($data);
         return $this->respond($r, 200);
     }
+
+
     public function del()
     {
       $json = $this->request->getJSON();
@@ -38,6 +43,8 @@ class MainController extends ResourceController
       $r = $main->delete($id);
       return $this->respond($r, 200);
     }
+
+
     public function getData()
     {
       $main = new MainModel();
@@ -46,45 +53,59 @@ class MainController extends ResourceController
 
     }
 
+
     public function sav()
     {
-        $json = $this->request->getJSON();
-        $category_id = $json->category_id;
-        $prod_name = $json->prod_name;
-        $stock = $json->stock;
-        $price = $json->price;
-        $unit_price = $json->unit_price;
-        $size_id = $json->size_id;
+        try {
+            $json = $this->request->getJSON();
 
-        // Handle image upload
-        $imagePath = ''; // Placeholder for the image path or filename
+            // Extracting data from the request
+            $category_id = $json->category_id;
+            $prod_name = $json->prod_name;
+            $stock = $json->stock;
+            $price = $json->price;
+            $unit_price = $json->unit_price;
+            $size_id = $json->size_id;
 
-        if ($file = $this->request->getFile('image')) {
-            // Process image upload
-            $newName = $file->getRandomName();
-            $file->move('./uploads/', $newName);
-            $imagePath = 'uploads/' . $newName; // Adjust as needed based on your directory structure
-        }
+            // Placeholder for image path
+            $imagePath = '';
 
-        $data = [
-            'category_id' => $category_id,
-            'image_path' => $imagePath, // Adjust column name as per your database structure
-            'prod_name' => $prod_name,
-            'stock' => $stock,
-            'price' => $price,
-            'unit_price' => $unit_price,
-            'size_id' => $size_id,
-        ];
+            // Check if an image was uploaded
+            if ($file = $this->request->getFile('image')) {
+                // Move the uploaded file to the specified folder
+                $newName = $file->getRandomName();
+                $file->move('./frontend/src/assets/images/', $newName);
+                $imagePath = base_url() . '/frontend/src/assets/images/' . $newName;
+            }
 
-        $productModel = new ProductModel();
-        $insertedId = $productModel->insert($data); // Insert data into productlist table
+            // Prepare data for insertion into the productlist table
+            $data = [
+                'category_id' => $category_id,
+                'image_path' => $imagePath,
+                'prod_name' => $prod_name,
+                'stock' => $stock,
+                'price' => $price,
+                'unit_price' => $unit_price,
+                'size_id' => $size_id,
+            ];
 
-        if ($insertedId) {
-            return $this->respond(['message' => 'Product added successfully', 'id' => $insertedId], 200);
-        } else {
-            return $this->respond(['message' => 'Failed to add product'], 500);
+            // Insert data into the productlist table
+            $productModel = new ProductModel();
+            $insertedId = $productModel->insert($data);
+
+            // Respond based on the insertion result
+            if ($insertedId) {
+                return $this->respond(['message' => 'Product added successfully', 'id' => $insertedId], 200);
+            } else {
+                return $this->respond(['message' => 'Failed to add product'], 500);
+            }
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            log_message('error', 'Product insertion failed: ' . $e->getMessage());
+            return $this->respond(['message' => 'An error occurred while adding the product'], 500);
         }
     }
+
 
     public function getDatas()
     {
@@ -92,7 +113,9 @@ class MainController extends ResourceController
       $datas = $produ->findAll();
       return $this->respond($datas, 200);
     }
-  public function getsize(){
+
+
+    public function getsize(){
     $siz = new SizeModel();
     $data = $siz->findAll();
 
@@ -116,6 +139,35 @@ class MainController extends ResourceController
       $catd = $cat->save($data);
       return $this->respond($catd, 200);
   }
+  public function editcateg()
+{
+    try {
+        $json = $this->request->getJSON();
+
+        // Extracting data from the request
+        $category_id = $json->category_id;
+        $category_name = $json->category_name;
+
+        // Find the category by ID
+        $categoryModel = new CategoryModel();
+        $category = $categoryModel->find($category_id);
+
+        if ($category) {
+            // Update the category name
+            $category['category_name'] = $category_name;
+            $categoryModel->update($category_id, $category);
+
+            return $this->respond(['message' => 'Category updated successfully'], 200);
+        } else {
+            return $this->respond(['message' => 'Category not found'], 404);
+        }
+    } catch (\Exception $e) {
+        // Log the error for debugging
+        log_message('error', 'Category update failed: ' . $e->getMessage());
+        return $this->respond(['message' => 'An error occurred while updating the category'], 500);
+    }
+}
+
 
   public function getcat()
 {
@@ -133,7 +185,33 @@ class MainController extends ResourceController
     return $this->respond($categories, 200);
 
 
-}
+  }
+
+  public function getevent()
+  {
+    $event = new EventBookingModel();
+    $data = $event->findAll();
+    return $this->respond($data, 200);
+  }
+  public function saveBooking()
+  {
+    $json = $this->request->getJSON();
+    $data = [
+      'event_title' => $json->event_title,
+      'start_date' => $json->start_date,
+      'end_date' => $json->end_date,
+      'location' => $json->location,
+      'event_description' => $json->event_description,
+      'name' => $json->name,
+      'email' => $json->email,
+      'phone' => $json->phone,
+    ];
+      $event = new EventBookingModel();
+      $eve = $event->save($data);
+      return $this->respond($eve, 200);
+  }
+
+
 
 //final copy
 }
