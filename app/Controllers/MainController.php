@@ -260,4 +260,3 @@ public function register()
 }
 
 //final copy
-}
