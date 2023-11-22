@@ -19,21 +19,39 @@ class MainController extends ResourceController
         //
     }
 
+//save products............................................................................................
 
-    public function save()
-    {
-      $json = $this->request->getJSON();
-      $data = [
-        'trackcode' => $json->trackcode,
-        'firstname' => $json->firstname,
-        'middlename' => $json->middlename,
-        'lastname' => $json->lastname,
-        'age' => $json->age,
-      ];
-        $main = new MainModel();
-        $r = $main->save($data);
-        return $this->respond($r, 200);
+public function save()
+{
+    try {
+        $image = $this->request->getFile('image');
+        $prods = $image->getName();
+
+        $data = [
+            'category_id' => $this->request->getPost('category_id'),
+            'size_id' => $this->request->getPost('size_id'),
+            'prod_name' => $this->request->getPost('prod_name'),
+            'stock' => $this->request->getPost('stock'),
+            'price' => $this->request->getPost('price'),
+            'unit_price' => $this->request->getPost('unit_price'),
+            'image' => base_url() . $this->handleImageUpload($image, $prods),
+        ];
+
+        $productModel = new ProductModel();
+        $savedData = $productModel->save($data);
+
+        return $this->respond($savedData, 200);
+    } catch (\Exception $e) {
+        log_message('error', 'Error saving data:' . $e->getMessage());
+        return $this->failServerError('An error occurred while saving the data.');
     }
+}
+
+public function handleImageUpload($image, $prods)
+{
+    $image->move(ROOTPATH . 'public/uploads/', $prods);
+    return 'uploads/' . $prods;
+}
 
 
     public function del()
@@ -53,61 +71,6 @@ class MainController extends ResourceController
       return $this->respond($data, 200);
 
     }
-
-
-    public function sav()
-    {
-        try {
-            $json = $this->request->getJSON();
-
-            // Extracting data from the request
-            $category_id = $json->category_id;
-            $prod_name = $json->prod_name;
-            $stock = $json->stock;
-            $price = $json->price;
-            $unit_price = $json->unit_price;
-            $size_id = $json->size_id;
-
-            // Placeholder for image path
-            $imagePath = '';
-
-            // Check if an image was uploaded
-            if ($file = $this->request->getFile('image')) {
-                // Move the uploaded file to the specified folder
-                $newName = $file->getRandomName();
-                $file->move('./frontend/src/assets/images/', $newName);
-                $imagePath = base_url() . '/frontend/src/assets/images/' . $newName;
-            }
-
-            // Prepare data for insertion into the productlist table
-            $data = [
-                'category_id' => $category_id,
-                'image_path' => $imagePath,
-                'prod_name' => $prod_name,
-                'stock' => $stock,
-                'price' => $price,
-                'unit_price' => $unit_price,
-                'size_id' => $size_id,
-            ];
-
-            // Insert data into the productlist table
-            $productModel = new ProductModel();
-            $insertedId = $productModel->insert($data);
-
-            // Respond based on the insertion result
-            if ($insertedId) {
-                return $this->respond(['message' => 'Product added successfully', 'id' => $insertedId], 200);
-            } else {
-                return $this->respond(['message' => 'Failed to add product'], 500);
-            }
-        } catch (\Exception $e) {
-            // Log the error for debugging
-            log_message('error', 'Product insertion failed: ' . $e->getMessage());
-            return $this->respond(['message' => 'An error occurred while adding the product'], 500);
-        }
-    }
-
-
     public function getDatas()
     {
       $produ = new ProductModel();

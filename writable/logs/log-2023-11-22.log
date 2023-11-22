@@ -1,0 +1,85 @@
+CRITICAL - 2023-11-22 00:05:11 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 00:06:47 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 00:10:38 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 05:22:35 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 05:22:39 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 05:53:54 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 05:53:55 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 05:54:05 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 05:57:02 --> Undefined constant "App\Controllers\this"
+in APPPATH\Controllers\MainController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-22 06:05:47 --> Error saving data: Undefined property: App\Controllers\MainController::$input
+CRITICAL - 2023-11-22 06:37:29 --> Call to a member function getName() on null
+in APPPATH\Controllers\MainController.php on line 28.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 06:39:21 --> Call to a member function getName() on null
+in APPPATH\Controllers\MainController.php on line 28.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 06:39:23 --> Call to a member function getName() on null
+in APPPATH\Controllers\MainController.php on line 28.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 06:39:31 --> Call to a member function getName() on null
+in APPPATH\Controllers\MainController.php on line 28.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-22 06:39:54 --> Call to a member function getName() on null
+in APPPATH\Controllers\MainController.php on line 28.
+ 1 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
