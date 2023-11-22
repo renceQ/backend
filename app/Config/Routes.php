@@ -20,3 +20,7 @@ $routes->match(['post', 'get'],'/getsize', 'MainController::getsize');
 $routes->post('/editcateg', 'MainController::editcateg');
 $routes->match(['post', 'get'],'/api/login', 'MainController::login');
 $routes->match(['post', 'get'],'/api/register', 'MainController::register');
+
+
+// get products by category
+$routes->get('getProductsByCategory/(:num)', 'MainController::getProductsByCategory/$1');

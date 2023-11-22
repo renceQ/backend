@@ -220,6 +220,14 @@ public function register()
         }
     }
 
+    // get products by category
+    public function getProductsByCategory($categoryId)
+{
+    $productModel = new ProductModel();
+    $products = $productModel->where('category_id', $categoryId)->findAll();
+    return $this->response->setJSON($products);
+}
+
 }
 
 //final copy
