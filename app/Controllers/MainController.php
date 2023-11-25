@@ -69,7 +69,6 @@ public function handleImageUpload($image, $prods)
       $main = new MainModel();
       $data = $main->findAll();
       return $this->respond($data, 200);
-
     }
     public function getDatas()
     {
@@ -147,8 +146,6 @@ public function handleImageUpload($image, $prods)
     }
 
     return $this->respond($categories, 200);
-
-
   }
 
   public function getevent()
@@ -220,6 +217,8 @@ public function register()
         }
     }
 
+
+    
     // get products by category
     public function getProductsByCategory($categoryId)
 {
@@ -227,6 +226,17 @@ public function register()
     $products = $productModel->where('category_id', $categoryId)->findAll();
     return $this->response->setJSON($products);
 }
+
+
+
+//get user information
+
+public function getUserData()
+    {
+      $user = new UserModel();
+      $data = $user->findAll();
+      return $this->respond($data, 200);
+    }
 
 }
 
