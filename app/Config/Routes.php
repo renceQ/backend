@@ -25,3 +25,7 @@ $routes->match(['post', 'get'],'/api/register', 'MainController::register');
 
 // get products by category
 $routes->get('getProductsByCategory/(:num)', 'MainController::getProductsByCategory/$1');
+
+
+
+

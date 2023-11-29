@@ -230,13 +230,13 @@ public function register()
 
 
 //get user information
-
 public function getUserData()
     {
-      $user = new UserModel();
-      $data = $user->findAll();
-      return $this->respond($data, 200);
-    }
+        $user = new UserModel();
+        $data = $user->findAll();
+        return $this->respond($data, 200);
+}
+
 
 }
 
