@@ -11,9 +11,13 @@ use App\Models\CategoryModel;
 use App\Models\SizeModel;
 use App\Models\EventBookingModel;
 use App\Models\UserModel;
+use \Config\Services;
+
 
 class MainController extends ResourceController
 {
+
+
     public function index()
     {
         //
