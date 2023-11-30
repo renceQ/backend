@@ -12,12 +12,10 @@ use App\Models\SizeModel;
 use App\Models\EventBookingModel;
 use App\Models\UserModel;
 use \Config\Services;
-
+use \Firebase\JWT\JWT;
 
 class MainController extends ResourceController
 {
-
-
     public function index()
     {
         //
