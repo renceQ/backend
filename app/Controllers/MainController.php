@@ -212,7 +212,7 @@ public function register()
             $pass = $data['password'];
             $authenticatePassword = password_verify($password, $pass);
             if ($authenticatePassword) {
-                return $this->respond(['msg' => 'okay', 'token' => $data['token']]);
+                return $this->respond(['msg' => 'okay', 'token' => $data['token'], 'profile_picture' => $data['profile_picture'], 'address' => $data['address'], 'contact' => $data['contact'], 'other_info' => $data['other_info']]);
             } else {
                 return $this->respond(['msg' => 'error'], 200);
             }
@@ -232,13 +232,12 @@ public function register()
 
 
 //get user information
-public function getUserData()
+public function getUserData($token)
     {
         $user = new UserModel();
-        $data = $user->findAll();
+        $data = $user->where('token',$token)->findAll();
         return $this->respond($data, 200);
-}
-
+    }
 
 }
 

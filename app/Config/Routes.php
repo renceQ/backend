@@ -11,7 +11,7 @@ $routes->get('/getDatas', 'MainController::getDatas');
 $routes->get('/getevent', 'MainController::getevent');
 $routes->get('/getcat', 'MainController::getcat');
 $routes->post('/save', 'MainController::save');
-$routes->get('/getUserData', 'MainController::getUserData');
+$routes->get('/getUserData/(:any)', 'MainController::getUserData/$1');
 
 
 $routes->post('/saveBooking', 'MainController::saveBooking');
