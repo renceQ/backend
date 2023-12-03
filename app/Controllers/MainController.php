@@ -36,6 +36,8 @@ public function save()
             'stock' => $this->request->getPost('stock'),
             'price' => $this->request->getPost('price'),
             'unit_price' => $this->request->getPost('unit_price'),
+            'UPC' => $this->request->getPost('UPC'),
+            'product_description' => $this->request->getPost('product_description'),
             'image' => base_url() . $this->handleImageUpload($image, $prods),
         ];
 
