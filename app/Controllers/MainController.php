@@ -25,29 +25,32 @@ class MainController extends ResourceController
 public function updateItem($id)
 {
     $productModel = new ProductModel();
-    $data = $productModel->find($id);
+    $existingData = $productModel->find($id);
 
-    if (!$data) {
+    if (!$existingData) {
         return $this->respond(['error' => 'Item not found.'], 404);
     }
-    
+
+    // Update only if the corresponding field is set in the request
     $data = [
-        'category_id' => $this->request->getVar('category_id'),
-        'size_id' => $this->request->getVar('size_id'),
-        'prod_name' => $this->request->getVar('prod_name'),
-        'stock' => $this->request->getVar('stock'),
-        'price' => $this->request->getVar('price'),
-        'unit_price' => $this->request->getVar('unit_price'),
-        'UPC' => $this->request->getVar('UPC'),
-        'product_description' => $this->request->getVar('product_description'),
-        'image' => $this->request->getVar('image'),
-        'barcode_image' => $this->request->getVar('barcode_image'),
-
+        'category_id' => $this->request->getVar('edit_category_id') ?? $existingData['category_id'],
+        'size_id' => $this->request->getVar('edit_size_id') ?? $existingData['size_id'],
+        'prod_name' => $this->request->getVar('edit_prod_name') ?? $existingData['prod_name'],
+        'stock' => $this->request->getVar('edit_stock') ?? $existingData['stock'],
+        'price' => $this->request->getVar('edit_price') ?? $existingData['price'],
+        'unit_price' => $this->request->getVar('edit_unit_price') ?? $existingData['unit_price'],
+        'UPC' => $this->request->getVar('edit_UPC') ?? $existingData['UPC'],
+        'product_description' => $this->request->getVar('edit_product_description') ?? $existingData['product_description'],
+        // Image and barcode_image fields might need special handling
+        'image' => $this->request->getVar('edit_image') ?? $existingData['image'],
+        'barcode_image' => $this->request->getVar('barcode_image') ?? $existingData['barcode_image'],
     ];
-    $productModel->set($data)->where('ID', $id)->update();
- 
 
+    $productModel->set($data)->where('ID', $id)->update();
+
+    return $this->respond(['message' => 'Item updated successfully.'], 200);
 }
+
 
 //save products............................................................................................
 
