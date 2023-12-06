@@ -18,14 +18,53 @@ class MainController extends ResourceController
 {
     public function index()
     {
-        //
+
     }
+    
+//edit
+public function updateItem($id)
+{
+    $productModel = new ProductModel();
+    $data = $productModel->find($id);
+
+    if (!$data) {
+        return $this->respond(['error' => 'Item not found.'], 404);
+    }
+    
+    $data = [
+        'category_id' => $this->request->getVar('category_id'),
+        'size_id' => $this->request->getVar('size_id'),
+        'prod_name' => $this->request->getVar('prod_name'),
+        'stock' => $this->request->getVar('stock'),
+        'price' => $this->request->getVar('price'),
+        'unit_price' => $this->request->getVar('unit_price'),
+        'UPC' => $this->request->getVar('UPC'),
+        'product_description' => $this->request->getVar('product_description'),
+        'image' => $this->request->getVar('image'),
+        'barcode_image' => $this->request->getVar('barcode_image'),
+
+    ];
+    $productModel->set($data)->where('ID', $id)->update();
+ 
+
+}
 
 //save products............................................................................................
 
 public function save()
 {
     try {
+        // Get barcode_image from POST data
+        $barcodeImage = $this->request->getPost('barcode_image');
+
+        // Handle barcode image upload
+        $barcodeImageName = 'barcode_' . time(); // Generate a unique name for barcode image
+        $barcodeImagePath = ROOTPATH . 'public/uploads/' . $barcodeImageName . '.png'; // Define the path to save the barcode image
+
+        // Decode base64 encoded image and save it
+        $barcodeImageBinary = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $barcodeImage));
+        file_put_contents($barcodeImagePath, $barcodeImageBinary);
+
         $image = $this->request->getFile('image');
         $prods = $image->getName();
 
@@ -39,6 +78,7 @@ public function save()
             'UPC' => $this->request->getPost('UPC'),
             'product_description' => $this->request->getPost('product_description'),
             'image' => base_url() . $this->handleImageUpload($image, $prods),
+            'barcode_image' => base_url() . 'public/uploads/' . $barcodeImageName . '.png', // Add barcode_image URL to the data array
         ];
 
         $productModel = new ProductModel();
@@ -50,6 +90,7 @@ public function save()
         return $this->failServerError('An error occurred while saving the data.');
     }
 }
+
 
 public function handleImageUpload($image, $prods)
 {
@@ -240,6 +281,10 @@ public function getUserData($token)
         $data = $user->where('token',$token)->findAll();
         return $this->respond($data, 200);
     }
+
+
+
+// update produclist
 
 }
 

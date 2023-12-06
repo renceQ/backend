@@ -28,4 +28,7 @@ $routes->get('getProductsByCategory/(:num)', 'MainController::getProductsByCateg
 
 
 
+// Update product by ID
+$routes->put('updateProduct/(:num)', 'MainController::updateProduct/$1');
+$routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
 
