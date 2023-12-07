@@ -31,7 +31,6 @@ public function updateItem($id)
         return $this->respond(['error' => 'Item not found.'], 404);
     }
 
-    // Update only if the corresponding field is set in the request
     $data = [
         'category_id' => $this->request->getVar('edit_category_id') ?? $existingData['category_id'],
         'size_id' => $this->request->getVar('edit_size_id') ?? $existingData['size_id'],
@@ -41,16 +40,37 @@ public function updateItem($id)
         'unit_price' => $this->request->getVar('edit_unit_price') ?? $existingData['unit_price'],
         'UPC' => $this->request->getVar('edit_UPC') ?? $existingData['UPC'],
         'product_description' => $this->request->getVar('edit_product_description') ?? $existingData['product_description'],
-        // Image and barcode_image fields might need special handling
-        'image' => $this->request->getVar('edit_image') ?? $existingData['image'],
         'barcode_image' => $this->request->getVar('barcode_image') ?? $existingData['barcode_image'],
     ];
 
+    // Handle image update if the 'edit_image' field is provided and changed in the request
+    $editImage = $this->request->getVar('edit_image');
+    $existingImage = $existingData['image'];
+
+    if (!empty($editImage) && $editImage !== $existingImage) {
+        $base64Image = $editImage;
+        
+        // Extract the image extension (e.g., jpeg, png)
+        $extension = explode('/', mime_content_type($base64Image))[1];
+        $imageName = 'updated_image_' . time() . '.' . $extension; // Generate a unique name for the updated image
+        $imagePath = 'uploads/' . $imageName; // Define the path to save the updated image
+
+        // Decode the base64 image string and save it to the server
+        $decodedImage = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64Image));
+        file_put_contents(ROOTPATH . 'public/' . $imagePath, $decodedImage);
+
+        // Save the updated image path within baseURL
+        $data['image'] = base_url($imagePath);
+    } else {
+        // If 'edit_image' is not provided or unchanged, retain the existing image path
+        $data['image'] = $existingImage;
+    }
+
+    // Update the data in the database
     $productModel->set($data)->where('ID', $id)->update();
 
     return $this->respond(['message' => 'Item updated successfully.'], 200);
 }
-
 
 //save products............................................................................................
 
