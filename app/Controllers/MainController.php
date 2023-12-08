@@ -13,6 +13,7 @@ use App\Models\EventBookingModel;
 use App\Models\UserModel;
 use \Config\Services;
 use \Firebase\JWT\JWT;
+use App\Models\AuditModel;
 
 class MainController extends ResourceController
 {
@@ -305,9 +306,14 @@ public function getUserData($token)
         return $this->respond($data, 200);
     }
 
+//audit getdata
+public function getaudith()
+{
+  $audithmodel = new AuditModel();
+  $data = $audithmodel->findAll();
+  return $this->respond($data, 200);
+}
 
-
-// update produclist
 
 }
 

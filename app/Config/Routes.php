@@ -12,8 +12,6 @@ $routes->get('/getevent', 'MainController::getevent');
 $routes->get('/getcat', 'MainController::getcat');
 $routes->post('/save', 'MainController::save');
 $routes->get('/getUserData/(:any)', 'MainController::getUserData/$1');
-
-
 $routes->post('/saveBooking', 'MainController::saveBooking');
 $routes->post('/del', 'MainController::del');
 $routes->post('/savecateg', 'MainController::savecateg');
@@ -22,13 +20,12 @@ $routes->post('/editcateg', 'MainController::editcateg');
 $routes->match(['post', 'get'],'/api/login', 'MainController::login');
 $routes->match(['post', 'get'],'/api/register', 'MainController::register');
 
-
 // get products by category
 $routes->get('getProductsByCategory/(:num)', 'MainController::getProductsByCategory/$1');
-
-
 
 // Update product by ID
 $routes->put('updateProduct/(:num)', 'MainController::updateProduct/$1');
 $routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
 
+//audit
+$routes->match(['post', 'get'],'getaudith', 'MainController::getaudith');
