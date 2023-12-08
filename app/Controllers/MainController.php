@@ -32,6 +32,9 @@ public function updateItem($id)
         return $this->respond(['error' => 'Item not found.'], 404);
     }
 
+    // Save the existing stock before updating
+    $oldStock = $existingData['stock'];
+
     $data = [
         'category_id' => $this->request->getVar('edit_category_id') ?? $existingData['category_id'],
         'size_id' => $this->request->getVar('edit_size_id') ?? $existingData['size_id'],
@@ -67,8 +70,30 @@ public function updateItem($id)
         $data['image'] = $existingImage;
     }
 
-    // Update the data in the database
+    // Update the data in the database including stock
     $productModel->set($data)->where('ID', $id)->update();
+
+    // Save the updated stock
+    $updatedData = $productModel->find($id);
+    $updatedStock = $updatedData['stock'];
+
+    // Insert into audit table
+    $auditModel = new AuditModel();
+    $auditData = [
+        'image' => $existingData['image'],
+        'category_id' => $existingData['category_id'],
+        'prod_name' => $existingData['prod_name'],
+        'stock' => $updatedStock, // Save the updated stock after the update
+        'price' => $existingData['price'],
+        'unit_price' => $existingData['unit_price'],
+        'size_id' => $existingData['size_id'],
+        'UPC' => $existingData['UPC'],
+        'barcode_image' => $existingData['barcode_image'],
+        'product_description' => $existingData['product_description'],
+        'old_stock' => $oldStock, // Store the old stock in the audit trail
+    ];
+
+    $auditModel->insert($auditData);
 
     return $this->respond(['message' => 'Item updated successfully.'], 200);
 }
