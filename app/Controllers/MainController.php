@@ -77,6 +77,7 @@ public function updateItem($id)
 
 public function save()
 {
+    
     try {
         // Get barcode_image from POST data
         $barcodeImage = $this->request->getPost('barcode_image');
@@ -104,7 +105,23 @@ public function save()
             'image' => base_url() . $this->handleImageUpload($image, $prods),
             'barcode_image' => base_url() . 'public/uploads/' . $barcodeImageName . '.png', // Add barcode_image URL to the data array
         ];
+        $auditData = [
+            'image' => $data['image'],
+            'category_id' => $data['category_id'],
+            'size_id' => $data['size_id'],
+            'prod_name' => $data['prod_name'],
+            'stock' => $data['stock'],
+            'price' => $data['price'],
+            'unit_price' => $data['unit_price'],
+            'UPC' => $data['UPC'],
+            'barcode_image' => $data['barcode_image'],
+            'product_description' => $data['product_description'],
+            // Add other necessary fields as needed
+        ];
 
+        // Save data in the AuditModel
+        $auditModel = new AuditModel();
+        $auditModel->insert($auditData);
         $productModel = new ProductModel();
         $savedData = $productModel->save($data);
 
