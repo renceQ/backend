@@ -12,7 +12,7 @@ class AuditModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['image', 'category_id', 'prod_name', 'stock', 'price','unit_price','size_id','UPC','barcode_image','created_at', 'updated_at', 'product_description', 'type', 'old_stock'];
+    protected $allowedFields    = ['image', 'category_id', 'prod_name', 'stock', 'price','unit_price','size_id','UPC','barcode_image','created_at', 'updated_at', 'product_description', 'type', 'old_stock','product_id'];
 
     // Dates
     protected $useTimestamps = false;
@@ -22,7 +22,14 @@ class AuditModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules =[];
+    protected $foreignKeys = [
+        [
+            'table' => 'productlist',
+            'field' => 'product_id',
+            'foreign_field' => 'id'
+        ]
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

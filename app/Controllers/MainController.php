@@ -44,8 +44,23 @@ public function updateItem($id)
         'unit_price' => $this->request->getVar('edit_unit_price') ?? $existingData['unit_price'],
         'UPC' => $this->request->getVar('edit_UPC') ?? $existingData['UPC'],
         'product_description' => $this->request->getVar('edit_product_description') ?? $existingData['product_description'],
-        'barcode_image' => $this->request->getVar('barcode_image') ?? $existingData['barcode_image'],
     ];
+
+    // Handle barcode image update if the 'barcode_image' field is provided and changed in the request
+    $barcodeImage = $this->request->getVar('barcode_image');
+    $existingBarcodeImage = $existingData['barcode_image'];
+
+    if (!empty($barcodeImage) && $barcodeImage !== $existingBarcodeImage) {
+        // Decode the base64 barcode image string and save it to the server
+        $decodedBarcodeImage = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $barcodeImage));
+        $barcodeImagePath = 'uploads/barcode_' . $id . '.png'; // Assuming PNG format for barcode images
+
+        file_put_contents(ROOTPATH . 'public/' . $barcodeImagePath, $decodedBarcodeImage);
+        $data['barcode_image'] = base_url($barcodeImagePath);
+    } else {
+        // If 'barcode_image' is not provided or unchanged, retain the existing barcode image path
+        $data['barcode_image'] = $existingBarcodeImage;
+    }
 
     // Handle image update if the 'edit_image' field is provided and changed in the request
     $editImage = $this->request->getVar('edit_image');
@@ -80,23 +95,26 @@ public function updateItem($id)
     // Insert into audit table
     $auditModel = new AuditModel();
     $auditData = [
-        'image' => $existingData['image'],
-        'category_id' => $existingData['category_id'],
-        'prod_name' => $existingData['prod_name'],
-        'stock' => $updatedStock, // Save the updated stock after the update
-        'price' => $existingData['price'],
-        'unit_price' => $existingData['unit_price'],
-        'size_id' => $existingData['size_id'],
-        'UPC' => $existingData['UPC'],
-        'barcode_image' => $existingData['barcode_image'],
-        'product_description' => $existingData['product_description'],
+        'image' => $data['image'], // Use the updated image path
+        'category_id' => $data['category_id'], // Use updated category_id
+        'prod_name' => $data['prod_name'], // Use updated prod_name
+        'stock' => $data['stock'], // Use updated stock
+        'price' => $data['price'], // Use updated price
+        'unit_price' => $data['unit_price'], // Use updated unit_price
+        'size_id' => $data['size_id'], // Use updated size_id
+        'UPC' => $data['UPC'], // Use updated UPC
+        'barcode_image' => $data['barcode_image'], // Use updated barcode image path
+        'product_description' => $data['product_description'], // Use updated product_description
         'old_stock' => $oldStock, // Store the old stock in the audit trail
+        'product_id' => $id, // Save the ID of the updated record from productlist into product_id in audit
+
     ];
 
     $auditModel->insert($auditData);
 
     return $this->respond(['message' => 'Item updated successfully.'], 200);
 }
+
 
 //save products............................................................................................
 
@@ -144,11 +162,18 @@ public function save()
             // Add other necessary fields as needed
         ];
 
+      $productModel = new ProductModel();
+
+        // Save data in the ProductModel and get the inserted ID
+        $savedData = $productModel->save($data);
+        $insertedProductId = $productModel->getInsertID(); // Get the ID of the inserted record
+
+        // Prepare data for AuditModel with the inserted product ID
+        $auditData['product_id'] = $insertedProductId;
+
         // Save data in the AuditModel
         $auditModel = new AuditModel();
         $auditModel->insert($auditData);
-        $productModel = new ProductModel();
-        $savedData = $productModel->save($data);
 
         return $this->respond($savedData, 200);
     } catch (\Exception $e) {
@@ -349,13 +374,25 @@ public function getUserData($token)
     }
 
 //audit getdata
-public function getaudith()
+public function getaudith($selectedProductId)
 {
-  $audithmodel = new AuditModel();
-  $data = $audithmodel->findAll();
-  return $this->respond($data, 200);
+    $audithmodel = new AuditModel();
+    // Filter records by the passed $productId
+    $data = $audithmodel->where('product_id', $selectedProductId)->findAll();
+    return $this->respond($data, 200);
 }
-
+// public function getaudith()
+// {
+//     $audithmodel = new AuditModel();
+//   $data = $audithmodel->findAll();
+//   return $this->respond($data, 200);
+// }
+public function audit($id)
+    {
+      $audit = new AuditModel();
+      $data = $audit->select('products.upc as upc, products.name as name, products.description as description, audit.oldQuantity as oldQuantity, audit.quantity as quantity, audit.type as type')->join('products', 'audit.productID=products.id')->where('products.upc', $id)->findAll();
+      return $this->respond($data,200);
+    }
 
 }
 

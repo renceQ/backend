@@ -28,4 +28,4 @@ $routes->put('updateProduct/(:num)', 'MainController::updateProduct/$1');
 $routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
 
 //audit
-$routes->match(['post', 'get'],'getaudith', 'MainController::getaudith');
+$routes->get('getaudith/(:num)', 'MainController::getaudith/$1');
