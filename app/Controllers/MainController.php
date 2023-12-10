@@ -15,6 +15,8 @@ use \Config\Services;
 use \Firebase\JWT\JWT;
 use App\Models\AuditModel;
 use App\Models\OrderModel;
+use App\Models\SalesModel;
+
 
 
 class MainController extends ResourceController
