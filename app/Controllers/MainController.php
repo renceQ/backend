@@ -436,7 +436,7 @@ public function updateOrderStatus($id)
         return $this->respond(['error' => 'Invalid status.'], 400);
     }
 
-    // If the status is 'approved', update the stock based on the quantity
+    // If the status is 'approved', update the stock and price based on the quantity
     if ($newStatus === 'approved') {
         // Get the product ID and quantity from the order
         $productId = $existingOrder['product_id'];
@@ -451,8 +451,12 @@ public function updateOrderStatus($id)
             $currentStock = $product['stock'];
             $updatedStock = $currentStock - $quantity;
 
-            // Update the product's stock in the database
-            $productModel->set('stock', $updatedStock)->where('ID', $productId)->update();
+            // Calculate the new price based on updated stock and unit price
+            $unitPrice = $product['unit_price'];
+            $newPrice = $updatedStock * $unitPrice;
+
+            // Update the product's stock and price in the database
+            $productModel->set(['stock' => $updatedStock, 'price' => $newPrice])->where('ID', $productId)->update();
         }
     }
 
@@ -462,6 +466,7 @@ public function updateOrderStatus($id)
 
     return $this->respond(['message' => 'Order status updated successfully.'], 200);
 }
+
 
 }
 
