@@ -373,27 +373,16 @@ public function getUserData($token)
         return $this->respond($data, 200);
     }
 
-//audit getdata
-public function getaudith($selectedProductId)
+public function getaudith($productId)
 {
     $audithmodel = new AuditModel();
     // Filter records by the passed $productId
-    $data = $audithmodel->where('product_id', $selectedProductId)->findAll();
+    $data = $audithmodel->where('product_id', $productId)->findAll();
     return $this->respond($data, 200);
 }
-// public function getaudith()
-// {
-//     $audithmodel = new AuditModel();
-//   $data = $audithmodel->findAll();
-//   return $this->respond($data, 200);
-// }
-public function audit($id)
-    {
-      $audit = new AuditModel();
-      $data = $audit->select('products.upc as upc, products.name as name, products.description as description, audit.oldQuantity as oldQuantity, audit.quantity as quantity, audit.type as type')->join('products', 'audit.productID=products.id')->where('products.upc', $id)->findAll();
-      return $this->respond($data,200);
-    }
 
+
+   
 }
 
 //final copy
