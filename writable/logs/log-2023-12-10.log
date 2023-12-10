@@ -1,0 +1,8 @@
+ERROR - 2023-12-10 02:56:42 --> Error saving data:file_put_contents(C:\laragon\www\backend\/uploads/barcode_1702177002.png): Failed to open stream: No such file or directory
+ERROR - 2023-12-10 02:56:44 --> Error saving data:file_put_contents(C:\laragon\www\backend\/uploads/barcode_1702177004.png): Failed to open stream: No such file or directory
+ERROR - 2023-12-10 02:56:53 --> Error saving data:file_put_contents(C:\laragon\www\backend\uploads/barcode_1702177013.png): Failed to open stream: No such file or directory
+ERROR - 2023-12-10 02:57:13 --> Error saving data:file_put_contents(C:\laragon\www\backend\uploads/barcode_1702177033.png): Failed to open stream: No such file or directory
+ERROR - 2023-12-10 02:58:06 --> Error saving data:file_put_contents(C:\laragon\www\backend\/uploads/barcode_1702177086.png): Failed to open stream: No such file or directory
+ERROR - 2023-12-10 02:58:08 --> Error saving data:file_put_contents(C:\laragon\www\backend\/uploads/barcode_1702177088.png): Failed to open stream: No such file or directory
+ERROR - 2023-12-10 02:58:47 --> Error saving data:file_put_contents(C:\laragon\www\backend\uploads/barcode_1702177127.png): Failed to open stream: No such file or directory
+ERROR - 2023-12-10 02:58:48 --> Error saving data:file_put_contents(C:\laragon\www\backend\uploads/barcode_1702177128.png): Failed to open stream: No such file or directory

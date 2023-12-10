@@ -128,6 +128,8 @@ public function save()
         // Handle barcode image upload
         $barcodeImageName = 'barcode_' . time(); // Generate a unique name for barcode image
         $barcodeImagePath = ROOTPATH . 'public/uploads/' . $barcodeImageName . '.png'; // Define the path to save the barcode image
+        
+        
 
         // Decode base64 encoded image and save it
         $barcodeImageBinary = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $barcodeImage));
@@ -146,7 +148,7 @@ public function save()
             'UPC' => $this->request->getPost('UPC'),
             'product_description' => $this->request->getPost('product_description'),
             'image' => base_url() . $this->handleImageUpload($image, $prods),
-            'barcode_image' => base_url() . 'public/uploads/' . $barcodeImageName . '.png', // Add barcode_image URL to the data array
+            'barcode_image' => base_url() . 'uploads/' . $barcodeImageName . '.png', // Add barcode_image URL to the data array
         ];
         $auditData = [
             'image' => $data['image'],
