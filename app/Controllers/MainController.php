@@ -414,6 +414,61 @@ public function getaudith($productId)
     return $this->respond($data, 200);
   }
 
+//update status
+public function updateOrderStatus($id)
+{
+    $orderModel = new OrderModel();
+    $existingOrder = $orderModel->find($id);
+
+    if (!$existingOrder) {
+        return $this->respond(['error' => 'Order not found.'], 404);
+    }
+
+    // Get the status from the request
+    $newStatus = $this->request->getVar('status');
+
+    // Validate the status - You can add more validation as needed
+    if (!in_array($newStatus, ['approved', 'denied'])) {
+        return $this->respond(['error' => 'Invalid status.'], 400);
+    }
+
+    // Update the status of the order
+    $data = ['status' => $newStatus];
+    $orderModel->set($data)->where('id', $id)->update();
+
+    // Update product stock if the order is approved
+    if ($newStatus === 'approved') {
+        // Get order details
+        $quantity = $existingOrder['quantity'];
+        $productId = $existingOrder['id'];
+
+        // Update product stock
+        $productModel = new ProductModel();
+        $productModel->updateProductStock($productId, $quantity);
+    }
+
+    return $this->respond(['message' => 'Order status updated successfully.'], 200);
+}
+
+
+public function updateProductStock($productId, $quantity)
+{
+    $product = $this->find($productId);
+
+    if ($product) {
+        // Get the current stock
+        $currentStock = $product['stock'];
+
+        // Calculate updated stock
+        $updatedStock = $currentStock - $quantity;
+
+        // Ensure stock doesn't go below 0
+        $updatedStock = max(0, $updatedStock);
+
+        // Update the stock in the productlist table
+        $this->where('id', $productId)->set('stock', $updatedStock)->update();
+    }
+}
 
 }
 

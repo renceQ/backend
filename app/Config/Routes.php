@@ -36,4 +36,7 @@ $routes->post('/placeOrder', 'MainController::placeOrder');
 //get order request
 $routes->get('getOrder', 'MainController::getOrder');
 
+//update status
+$routes->post('updateOrderStatus/(:any)', 'MainController::updateOrderStatus/$1');
+$routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
 
