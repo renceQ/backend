@@ -195,3 +195,45 @@ in SYSTEMPATH\Model.php on line 873.
  3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
  4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 11:15:50 --> Call to undefined method App\Models\ProductModel::updateProductStock
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\MainController.php(447): CodeIgniter\Model->__call('updateProductStock', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->updateOrderStatus('31')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 11:26:21 --> Undefined array key "product_id"
+in APPPATH\Controllers\MainController.php on line 443.
+ 1 APPPATH\Controllers\MainController.php(443): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_id"', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 443)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->updateOrderStatus('33')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 12:27:30 --> Undefined variable $productId
+in APPPATH\Controllers\MainController.php on line 447.
+ 1 APPPATH\Controllers\MainController.php(447): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $productId', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 447)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->updateOrderStatus('34')
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 13:33:15 --> Undefined property: stdClass::$product_id
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$product_id', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 13:33:24 --> Undefined property: stdClass::$product_id
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$product_id', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 13:35:03 --> Undefined property: stdClass::$product_id
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$product_id', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

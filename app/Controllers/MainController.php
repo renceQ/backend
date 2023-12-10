@@ -400,6 +400,7 @@ public function getaudith($productId)
       'contact' => $json->contact,
       'other_info' => $json->other_info,
       'customerName' => $json->customerName,
+      'product_id' => $json->id,
     //   'status' => $json->status,
     ];
       $ordermodel = new OrderModel();
@@ -414,6 +415,7 @@ public function getaudith($productId)
     return $this->respond($data, 200);
   }
 
+//update status
 //update status
 public function updateOrderStatus($id)
 {
@@ -432,42 +434,31 @@ public function updateOrderStatus($id)
         return $this->respond(['error' => 'Invalid status.'], 400);
     }
 
+    // If the status is 'approved', update the stock based on the quantity
+    if ($newStatus === 'approved') {
+        // Get the product ID and quantity from the order
+        $productId = $existingOrder['product_id'];
+        $quantity = $existingOrder['quantity'];
+
+        // Get the product details from the ProductModel
+        $productModel = new ProductModel();
+        $product = $productModel->find($productId);
+
+        if ($product) {
+            // Calculate the new stock after approval
+            $currentStock = $product['stock'];
+            $updatedStock = $currentStock - $quantity;
+
+            // Update the product's stock in the database
+            $productModel->set('stock', $updatedStock)->where('ID', $productId)->update();
+        }
+    }
+
     // Update the status of the order
     $data = ['status' => $newStatus];
     $orderModel->set($data)->where('id', $id)->update();
 
-    // Update product stock if the order is approved
-    if ($newStatus === 'approved') {
-        // Get order details
-        $quantity = $existingOrder['quantity'];
-        $productId = $existingOrder['id'];
-
-        // Update product stock
-        $productModel = new ProductModel();
-        $productModel->updateProductStock($productId, $quantity);
-    }
-
     return $this->respond(['message' => 'Order status updated successfully.'], 200);
-}
-
-
-public function updateProductStock($productId, $quantity)
-{
-    $product = $this->find($productId);
-
-    if ($product) {
-        // Get the current stock
-        $currentStock = $product['stock'];
-
-        // Calculate updated stock
-        $updatedStock = $currentStock - $quantity;
-
-        // Ensure stock doesn't go below 0
-        $updatedStock = max(0, $updatedStock);
-
-        // Update the stock in the productlist table
-        $this->where('id', $productId)->set('stock', $updatedStock)->update();
-    }
 }
 
 }
