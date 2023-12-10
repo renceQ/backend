@@ -14,6 +14,8 @@ use App\Models\UserModel;
 use \Config\Services;
 use \Firebase\JWT\JWT;
 use App\Models\AuditModel;
+use App\Models\OrderModel;
+
 
 class MainController extends ResourceController
 {
@@ -384,7 +386,28 @@ public function getaudith($productId)
 }
 
 
-   
+   // save order product
+   public function placeOrder()
+  {
+    $json = $this->request->getJSON();
+    $data = [
+      'image' => $json->image,
+      'prod_name' => $json->prod_name,
+      'unit_price' => $json->unit_price,
+      'size_id' => $json->size_id,
+      'quantity' => $json->quantity,
+      'address' => $json->address,
+      'contact' => $json->contact,
+      'other_info' => $json->other_info,
+      'customerName' => $json->customerName,
+    //   'status' => $json->status,
+    ];
+      $ordermodel = new OrderModel();
+      $order = $ordermodel->save($data);
+      return $this->respond($order, 200);
+  }
+
+
 }
 
 //final copy

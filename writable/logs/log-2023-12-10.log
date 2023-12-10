@@ -6,3 +6,108 @@ ERROR - 2023-12-10 02:58:06 --> Error saving data:file_put_contents(C:\laragon\w
 ERROR - 2023-12-10 02:58:08 --> Error saving data:file_put_contents(C:\laragon\www\backend\/uploads/barcode_1702177088.png): Failed to open stream: No such file or directory
 ERROR - 2023-12-10 02:58:47 --> Error saving data:file_put_contents(C:\laragon\www\backend\uploads/barcode_1702177127.png): Failed to open stream: No such file or directory
 ERROR - 2023-12-10 02:58:48 --> Error saving data:file_put_contents(C:\laragon\www\backend\uploads/barcode_1702177128.png): Failed to open stream: No such file or directory
+CRITICAL - 2023-12-10 04:36:13 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:36:23 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:36:27 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:36:28 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:36:28 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:37:24 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:38:31 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:43:39 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:45:01 --> Undefined property: stdClass::$image
+in APPPATH\Controllers\MainController.php on line 394.
+ 1 APPPATH\Controllers\MainController.php(394): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$image', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 394)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:48:15 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:48:52 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:49:57 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:55:14 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:57:01 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-10 04:57:12 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\MainController.php on line 403.
+ 1 APPPATH\Controllers\MainController.php(403): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\backend\\app\\Controllers\\MainController.php', 403)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\MainController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MainController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

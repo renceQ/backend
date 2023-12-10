@@ -29,3 +29,7 @@ $routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
 
 //audit
 $routes->get('getaudith/(:num)', 'MainController::getaudith/$1');
+
+//save order product
+$routes->post('/placeOrder', 'MainController::placeOrder');
+
