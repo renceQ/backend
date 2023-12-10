@@ -33,3 +33,7 @@ $routes->get('getaudith/(:num)', 'MainController::getaudith/$1');
 //save order product
 $routes->post('/placeOrder', 'MainController::placeOrder');
 
+//get order request
+$routes->get('getOrder', 'MainController::getOrder');
+
+

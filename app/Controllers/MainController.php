@@ -407,6 +407,13 @@ public function getaudith($productId)
       return $this->respond($order, 200);
   }
 
+  public function getOrder()
+  {
+    $ordermodel = new OrderModel();
+    $data = $ordermodel->findAll();
+    return $this->respond($data, 200);
+  }
+
 
 }
 
