@@ -403,6 +403,8 @@ public function getaudith($productId)
       'other_info' => $json->other_info,
       'customerName' => $json->customerName,
       'product_id' => $json->id,
+      'transaction_code' => $json->transaction_code,
+      
     //   'status' => $json->status,
     ];
       $ordermodel = new OrderModel();
