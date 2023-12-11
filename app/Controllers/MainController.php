@@ -308,6 +308,7 @@ public function handleImageUpload($image, $prods)
       'name' => $json->name,
       'email' => $json->email,
       'phone' => $json->phone,
+      'service' => $json->service,
     ];
       $event = new EventBookingModel();
       $eve = $event->save($data);
@@ -387,6 +388,14 @@ public function getaudith($productId)
     return $this->respond($data, 200);
 }
 
+public function getsales($productId)
+{
+    $salesModel = new SalesModel();
+    // Filter records by the passed $productId
+    $data = $salesModel->where('product_id', $productId)->findAll();
+    return $this->respond($data, 200);
+}
+
 
    // save order product
    public function placeOrder()
@@ -404,6 +413,7 @@ public function getaudith($productId)
       'customerName' => $json->customerName,
       'product_id' => $json->id,
       'transaction_code' => $json->transaction_code,
+      'total' => $json->total,
       
     //   'status' => $json->status,
     ];
@@ -483,6 +493,7 @@ public function updateOrderStatus($id)
         'status' => $newStatus,
         'product_id' => $existingOrder['product_id'],
         'transaction_code' => $existingOrder['transaction_code'],
+        'total' => $existingOrder['total'],
     ];
 
     // Save data to the SalesModel
@@ -491,6 +502,36 @@ public function updateOrderStatus($id)
 
     return $this->respond(['message' => 'Order status updated successfully.'], 200);
 }
+
+public function updateEventStatus()
+{
+    // Get the event ID and status from the request
+    $eventId = $this->request->getVar('id');
+    $newStatus = $this->request->getVar('status');
+
+    // Perform validation on $eventId and $newStatus
+
+    // Assuming you have a model named EventModel to handle database operations
+    $eventModel = new EventBookingModel();
+
+    // Check if the event exists
+    $event = $eventModel->find($eventId);
+
+    if (!$event) {
+        return $this->respond(['error' => 'Event not found.'], 404);
+    }
+
+    // Update the event status
+    $event['status'] = $newStatus;
+    $updated = $eventModel->update($eventId, $event);
+
+    if ($updated) {
+        return $this->respond(['message' => 'Event status updated successfully.'], 200);
+    } else {
+        return $this->respond(['error' => 'Failed to update event status.'], 500);
+    }
+}
+
 
 
 }

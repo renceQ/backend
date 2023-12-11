@@ -30,6 +30,10 @@ $routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
 //audit
 $routes->get('getaudith/(:num)', 'MainController::getaudith/$1');
 
+//get sales
+$routes->get('getsales/(:num)', 'MainController::getsales/$1');
+
+
 //save order product
 $routes->post('/placeOrder', 'MainController::placeOrder');
 
@@ -39,4 +43,9 @@ $routes->get('getOrder', 'MainController::getOrder');
 //update status
 $routes->post('updateOrderStatus/(:any)', 'MainController::updateOrderStatus/$1');
 $routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
+
+
+//update event status
+
+$routes->post('updateEventStatus', 'MainController::updateEventStatus');
 
