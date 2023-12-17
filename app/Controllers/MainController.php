@@ -16,6 +16,7 @@ use \Firebase\JWT\JWT;
 use App\Models\AuditModel;
 use App\Models\OrderModel;
 use App\Models\SalesModel;
+use App\Models\NotifModel;
 
 
 
@@ -459,7 +460,7 @@ public function updateOrderStatus($id)
     $newStatus = $this->request->getVar('status');
 
     // Validate the status - You can add more validation as needed
-    if (!in_array($newStatus, ['approved', 'denied'])) {
+    if (!in_array($newStatus, ['approved', 'denied', 'pending'])) {
         return $this->respond(['error' => 'Invalid status.'], 400);
     }
 
@@ -508,11 +509,36 @@ public function updateOrderStatus($id)
         'product_id' => $existingOrder['product_id'],
         'transaction_code' => $existingOrder['transaction_code'],
         'total' => $existingOrder['total'],
+        'token' => $existingOrder['token'],
     ];
 
     // Save data to the SalesModel
     $salesModel = new SalesModel();
     $salesModel->insert($salesData);
+
+      // Save updated data to the sales table
+      $notifdata = [
+        'image' => $existingOrder['image'],
+        'prod_name' => $existingOrder['prod_name'],
+        'unit_price' => $existingOrder['unit_price'],
+        'size_id' => $existingOrder['size_id'],
+        'quantity' => $existingOrder['quantity'],
+        'address' => $existingOrder['address'],
+        'contact' => $existingOrder['contact'],
+        'other_info' => $existingOrder['other_info'],
+        'customerName' => $existingOrder['customerName'],
+        'updated_at' => date('Y-m-d H:i:s'), // Updated timestamp
+        'created_at' => $existingOrder['created_at'],
+        'status' => $newStatus,
+        'product_id' => $existingOrder['product_id'],
+        'transaction_code' => $existingOrder['transaction_code'],
+        'total' => $existingOrder['total'],
+        'token' => $existingOrder['token'],
+    ];
+
+    // Save data to the SalesModel
+    $notifModel = new NotifModel();
+    $notifModel->insert($notifdata);
 
     return $this->respond(['message' => 'Order status updated successfully.'], 200);
 }
@@ -555,6 +581,16 @@ public function updateEventStatus()
         return $this->respond($data, 200);
         
     }
+
+    public function getNotif()
+    {
+        $notif= new NotifModel();
+        $data = $notif->findAll();
+        return $this->respond($data, 200);
+        
+    }
+
+
 
 }
 

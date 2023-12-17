@@ -51,8 +51,10 @@ $routes->match(['post', 'get'], 'updateEventStatus', 'MainController::updateEven
 $routes->match(['post', 'get'], 'checkUsername', 'MainController::checkUsername');
 
 
-
+//sample data for practice
 $routes->get('/getgeData', 'MainController::getgeData');
+//notif
+$routes->get('/getNotif', 'MainController::getNotif');
 
 
 
