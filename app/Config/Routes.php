@@ -48,5 +48,12 @@ $routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
 //update event status
 
 $routes->match(['post', 'get'], 'updateEventStatus', 'MainController::updateEventStatus');
+$routes->match(['post', 'get'], 'checkUsername', 'MainController::checkUsername');
+
+
+
+$routes->get('/getgeData', 'MainController::getgeData');
+
+
 
 

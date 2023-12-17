@@ -26,6 +26,19 @@ class MainController extends ResourceController
 
     }
     
+    public function checkUsername()
+    {
+        $username = $this->request->getPost('username'); // Get the username from the POST request
+    
+        $model = new UserModel();
+        $user = $model->where('username', $username)->first();
+    
+        if ($user) {
+            return $this->response->setJSON(['exists' => true]); // Username exists
+        }
+    
+        return $this->response->setJSON(['exists' => false]); // Username does not exist
+    }
 //edit
 public function updateItem($id)
 {
@@ -414,6 +427,7 @@ public function getsales($productId)
       'product_id' => $json->id,
       'transaction_code' => $json->transaction_code,
       'total' => $json->total,
+      'token' => $json->token,
       
     //   'status' => $json->status,
     ];
@@ -533,6 +547,14 @@ public function updateEventStatus()
 }
 
 
+
+    public function getgeData()
+    {
+        $order= new OrderModel();
+        $data = $order->findAll();
+        return $this->respond($data, 200);
+        
+    }
 
 }
 
