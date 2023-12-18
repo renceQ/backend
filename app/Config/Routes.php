@@ -42,6 +42,7 @@ $routes->get('getOrder', 'MainController::getOrder');
 
 //update status
 $routes->post('updateOrderStatus/(:any)', 'MainController::updateOrderStatus/$1');
+$routes->post('updateOrderStatus', 'MainController::updateOrderStatus');
 $routes->post('updateItem/(:any)', 'MainController::updateItem/$1');
 
 
@@ -55,6 +56,13 @@ $routes->match(['post', 'get'], 'checkUsername', 'MainController::checkUsername'
 $routes->get('/getgeData', 'MainController::getgeData');
 //notif
 $routes->get('/getNotif', 'MainController::getNotif');
+$routes->match(['post', 'get'], 'updateNotifStatus/(:any)', 'MainController::updateNotifStatus/$1');
+$routes->post('updateNotifStatus/(:any)', 'MainController::updateNotifStatus/$1');
+$routes->get('updateNotifStatus/(:any)', 'MainController::updateNotifStatus/$1');
+
+
+
+
 
 
 

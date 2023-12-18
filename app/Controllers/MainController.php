@@ -445,10 +445,11 @@ public function getsales($productId)
   }
 
 
-//update status
+
 // Update order status and save data to sales table
 public function updateOrderStatus($id)
 {
+
     $orderModel = new OrderModel();
     $existingOrder = $orderModel->find($id);
 
@@ -458,6 +459,7 @@ public function updateOrderStatus($id)
 
     // Get the status from the request
     $newStatus = $this->request->getVar('status');
+    $reason = $this->request->getVar('reason');
 
     // Validate the status - You can add more validation as needed
     if (!in_array($newStatus, ['approved', 'denied', 'pending', 'delivering', 'recieved', 'cancelled'])) {
@@ -489,7 +491,10 @@ public function updateOrderStatus($id)
     }
 
     // Update the status of the order
-    $data = ['status' => $newStatus];
+    $data = [
+        'status' => $newStatus,
+        'reason' => $reason, // Include the reason in the data to be updated
+    ];
     $orderModel->set($data)->where('id', $id)->update();
 
     // Save updated data to the sales table
@@ -516,7 +521,7 @@ public function updateOrderStatus($id)
     $salesModel = new SalesModel();
     $salesModel->insert($salesData);
 
-      // Save updated data to the sales table
+      // Save updated data to the notif table
       $notifdata = [
         'image' => $existingOrder['image'],
         'prod_name' => $existingOrder['prod_name'],
@@ -536,10 +541,13 @@ public function updateOrderStatus($id)
         'token' => $existingOrder['token'],
     ];
 
+    
     // Save data to the SalesModel
     $notifModel = new NotifModel();
     $notifModel->insert($notifdata);
 
+    $notifModel->set(['status' => 'deleted'])->where('id', $id)->update();
+    
     return $this->respond(['message' => 'Order status updated successfully.'], 200);
 }
 
@@ -590,6 +598,33 @@ public function updateEventStatus()
         
     }
 
+    public function updateNotifStatus($id)
+    {
+        try {
+            // Retrieve status data from the POST request
+            $status = $this->request->getVar('status');
+    
+            // Ensure valid status provided - Add more validation if needed
+            if ($status !== 'deleted') {
+                return $this->respond(['error' => 'Invalid status provided.'], 400);
+            }
+    
+            // Perform the update in the NotifModel
+            $notifModel = new NotifModel();
+            $updated = $notifModel->update($id, ['status' => $status]);
+    
+            if ($updated) {
+                // Assuming getOrder() retrieves updated orders after status update
+                $this->getOrder(); // Refresh orders after status update
+                return $this->respond(['message' => 'Notification status updated successfully.'], 200);
+            } else {
+                return $this->respond(['error' => 'Error updating notification status.'], 500);
+            }
+        } catch (\Exception $e) {
+            return $this->respond(['error' => 'Error updating notification status: ' . $e->getMessage()], 500);
+        }
+    }
+    
 
 
 }
