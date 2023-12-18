@@ -460,7 +460,7 @@ public function updateOrderStatus($id)
     $newStatus = $this->request->getVar('status');
 
     // Validate the status - You can add more validation as needed
-    if (!in_array($newStatus, ['approved', 'denied', 'pending'])) {
+    if (!in_array($newStatus, ['approved', 'denied', 'pending', 'delivering', 'recieved', 'cancelled'])) {
         return $this->respond(['error' => 'Invalid status.'], 400);
     }
 
