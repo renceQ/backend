@@ -488,6 +488,28 @@ public function updateOrderStatus($id)
             // Update the product's stock and price in the database
             $productModel->set(['stock' => $updatedStock, 'price' => $newPrice])->where('ID', $productId)->update();
         }
+    } elseif ($newStatus === 'cancelled') {
+        // Get the product ID and quantity from the order
+        $productId = $existingOrder['product_id'];
+        $quantity = $existingOrder['quantity'];
+        $total = $existingOrder['total'];
+
+        // Get the product details from the ProductModel
+        $productModel = new ProductModel();
+        $product = $productModel->find($productId);
+
+        if ($product) {
+            // Calculate the new stock after cancellation
+            $currentStock = $product['stock'];
+            $updatedStock = $currentStock + $quantity;
+
+            // Calculate the new price based on updated stock and total
+            $currentPrice = $product['price'];
+            $newPrice = $currentPrice + $total;
+
+            // Update the product's stock and price in the database
+            $productModel->set(['stock' => $updatedStock, 'price' => $newPrice])->where('id', $productId)->update();
+        }
     }
 
     // Update the status of the order
