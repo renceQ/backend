@@ -519,6 +519,9 @@ public function updateOrderStatus($id)
     ];
     $orderModel->set($data)->where('id', $id)->update();
 
+    
+
+
     // Save updated data to the sales table
     $salesData = [
         'image' => $existingOrder['image'],
@@ -578,6 +581,7 @@ public function updateEventStatus()
     // Get the event ID and status from the request
     $eventId = $this->request->getVar('id');
     $newStatus = $this->request->getVar('status');
+    $newreason = $this->request->getVar('reason');
 
     // Perform validation on $eventId and $newStatus
 
@@ -593,6 +597,7 @@ public function updateEventStatus()
 
     // Update the event status
     $event['status'] = $newStatus;
+    $event['reason'] = $newreason;
     $updated = $eventModel->update($eventId, $event);
 
     if ($updated) {
