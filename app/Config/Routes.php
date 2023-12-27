@@ -36,6 +36,7 @@ $routes->get('getsales/(:num)', 'MainController::getsales/$1');
 
 //save order product
 $routes->post('/placeOrder', 'MainController::placeOrder');
+$routes->post('/addtocart', 'MainController::addtocart');
 
 //get order request
 $routes->get('getOrder', 'MainController::getOrder');

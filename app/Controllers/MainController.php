@@ -429,8 +429,33 @@ public function getsales($productId)
       'transaction_code' => $json->transaction_code,
       'total' => $json->total,
       'token' => $json->token,
-      
-    //   'status' => $json->status,
+      'status' => $json->status,
+
+    ];
+      $ordermodel = new OrderModel();
+      $order = $ordermodel->save($data);
+      return $this->respond($order, 200);
+  }
+
+  public function addtocart()
+  {
+    $json = $this->request->getJSON();
+    $data = [
+      'image' => $json->image,
+      'prod_name' => $json->prod_name,
+      'unit_price' => $json->unit_price,
+      'size_id' => $json->size_id,
+      'quantity' => $json->quantity,
+      'address' => $json->address,
+      'contact' => $json->contact,
+      'other_info' => $json->other_info,
+      'customerName' => $json->customerName,
+      'product_id' => $json->id,
+      'transaction_code' => $json->transaction_code,
+      'total' => $json->total,
+      'token' => $json->token,
+      'status' => $json->status,
+
     ];
       $ordermodel = new OrderModel();
       $order = $ordermodel->save($data);
